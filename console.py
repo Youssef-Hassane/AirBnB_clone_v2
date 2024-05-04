@@ -116,8 +116,6 @@ class HBNBCommand(cmd.Cmd):
         """ Overrides the emptyline method of CMD """
         pass
 
-    
-
     def do_create(self, args):
         """ Create an object of any class"""
         # Ignored attributes for storage
