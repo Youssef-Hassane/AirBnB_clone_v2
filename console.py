@@ -114,17 +114,56 @@ class HBNBCommand(cmd.Cmd):
         pass
 
     def do_create(self, args):
-        """ Create an object of any class"""
+        """ Create an object of any class with given parameters"""
         if not args:
             print("** class name missing **")
             return
-        elif args not in HBNBCommand.classes:
+
+        # Splitting the arguments into class name and parameters
+        args_list = args.split()
+        class_name = args_list[0]
+        params = args_list[1:]
+
+        # Check if the class exists
+        if class_name not in HBNBCommand.classes:
             print("** class doesn't exist **")
             return
-        new_instance = HBNBCommand.classes[args]()
+
+        # Initialize a dictionary to store attribute key-value pairs
+        attributes = {}
+
+        # Iterate over the parameters to extract key-value pairs
+        for param in params:
+            try:
+                # Split the parameter into key and value
+                key, value = param.split('=')
+
+                # Check if the value is enclosed in double quotes and remove them
+                if value.startswith('"') and value.endswith('"'):
+                    value = value[1:-1]
+
+                # Replace underscores with spaces in the key
+                key = key.replace('_', ' ')
+
+                # Convert the value to the appropriate type
+                if '.' in value:
+                    # Float value
+                    value = float(value)
+                elif value.isdigit():
+                    # Integer value
+                    value = int(value)
+
+                # Add the key-value pair to the attributes dictionary
+                attributes[key] = value
+            except ValueError:
+                # Skip parameters that couldn't be parsed correctly
+                continue
+
+        # Create a new instance of the specified class with the extracted attributes
+        new_instance = HBNBCommand.classes[class_name](**attributes)
         storage.save()
         print(new_instance.id)
-        storage.save()
+
 
     def help_create(self):
         """ Help information for the create method """
