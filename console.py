@@ -118,20 +118,15 @@ class HBNBCommand(cmd.Cmd):
 
     def do_create(self, args):
         """ Create an object of any class"""
-        # Ignored attributes for storage
-        ignored_attributes = (
-            'id', 'created_at', 'updated_at', '__class__')
-        # Extract class name
+        ignored_attrs = ('id', 'created_at', 'updated_at', '__class__')
         class_name = ''
         name_pattern = r'(?P<name>(?:[a-zA-Z]|_)(?:[a-zA-Z]|\d|_)*)'
         class_match = re.match(name_pattern, args)
-        # Initialize object parameters
-        obj_params = {}
+        obj_kwargs = {}
         if class_match is not None:
             class_name = class_match.group('name')
             params_str = args[len(class_name):].strip()
             params = params_str.split(' ')
-            # Patterns for parameter parsing
             str_pattern = r'(?P<t_str>"([^"]|\")*")'
             float_pattern = r'(?P<t_float>[-+]?\d+\.\d+)'
             int_pattern = r'(?P<t_int>[-+]?\d+)'
@@ -141,47 +136,42 @@ class HBNBCommand(cmd.Cmd):
                 float_pattern,
                 int_pattern
             )
-            # Parse parameters
             for param in params:
                 param_match = re.fullmatch(param_pattern, param)
                 if param_match is not None:
-                    key = param_match.group('name')
-                    str_val = param_match.group('t_str')
-                    float_val = param_match.group('t_float')
-                    int_val = param_match.group('t_int')
-                    if float_val is not None:
-                        obj_params[key] = float(float_val)
-                    if int_val is not None:
-                        obj_params[key] = int(int_val)
-                    if str_val is not None:
-                        obj_params[key] = str_val[1:-1].replace('_', ' ')
+                    key_name = param_match.group('name')
+                    str_v = param_match.group('t_str')
+                    float_v = param_match.group('t_float')
+                    int_v = param_match.group('t_int')
+                    if float_v is not None:
+                        obj_kwargs[key_name] = float(float_v)
+                    if int_v is not None:
+                        obj_kwargs[key_name] = int(int_v)
+                    if str_v is not None:
+                        obj_kwargs[key_name] = str_v[1:-1].replace('_', ' ')
         else:
             class_name = args
-        # Class name validation
         if not class_name:
             print("** class name missing **")
             return
         elif class_name not in HBNBCommand.classes:
             print("** class doesn't exist **")
             return
-        # Store object
         if os.getenv('HBNB_TYPE_STORAGE') == 'db':
-            # Set default values for database storage
-            if 'id' not in obj_params:
-                obj_params['id'] = str(uuid.uuid4())
-            if 'created_at' not in obj_params:
-                obj_params['created_at'] = str(datetime.now())
-            if 'updated_at' not in obj_params:
-                obj_params['updated_at'] = str(datetime.now())
-            new_instance = HBNBCommand.classes[class_name](**obj_params)
+            if not hasattr(obj_kwargs, 'id'):
+                obj_kwargs['id'] = str(uuid.uuid4())
+            if not hasattr(obj_kwargs, 'created_at'):
+                obj_kwargs['created_at'] = str(datetime.now())
+            if not hasattr(obj_kwargs, 'updated_at'):
+                obj_kwargs['updated_at'] = str(datetime.now())
+            new_instance = HBNBCommand.classes[class_name](**obj_kwargs)
             new_instance.save()
             print(new_instance.id)
         else:
-            # Instantiate object and set attributes
             new_instance = HBNBCommand.classes[class_name]()
-            for attr, value in obj_params.items():
-                if attr not in ignored_attributes:
-                    setattr(new_instance, attr, value)
+            for key, value in obj_kwargs.items():
+                if key not in ignored_attrs:
+                    setattr(new_instance, key, value)
             new_instance.save()
             print(new_instance.id)
 
