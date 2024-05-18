@@ -1,142 +1,107 @@
-<center> <h1>HBNB - The Console</h1> </center>
+# AirBnB clone - The console
 
-This repository contains the initial stage of a student project to build a clone of the AirBnB website. This stage implements a backend interface, or console, to manage program data. Console commands allow the user to create, update, and destroy objects, as well as manage file storage. Using a system of JSON serialization/deserialization, storage is persistent between sessions.
+![AirBnB Logo](https://github.com/Youssef-Hassane/AirBnB_clone/blob/main/images/65f4a1dd9c51265f49d0.png)
+
+This repository provides the backend for the AirBnB clone project, 
+interfacing it with a console application using the cmd module in Python.
+The console allows for the user to interact with the system in a more human-friendly way.
+
+
+
+## Tasks:
+```
+Ⓜ️ 0. README, AUTHORS:				COMPLETED ✅	
+Ⓜ️ 1. Be pycodestyle compliant: 		COMPLETED ✅	
+Ⓜ️ 2. Unittests: 				🚨 Check #2 Down 🚨 
+Ⓜ️ 3. BaseModel: 				COMPLETED ✅	
+Ⓜ️ 4. Create BaseModel from dictionary:		COMPLETED ✅	
+Ⓜ️ 5. Store first object: 			COMPLETED ✅
+Ⓜ️ 6. Console 0.0.1:				COMPLETED ✅ 
+Ⓜ️ 7. Console 0.1:				COMPLETED ✅
+Ⓜ️ 8. First User:				COMPLETED ✅
+Ⓜ️ 9. More classes:				COMPLETED ✅
+Ⓜ️ 10. Console 1.0:				COMPLETED ✅
+🚀 11. All instances by class name:		COMPLETED ✅
+🚀 12. Count instances: 			COMPLETED ✅
+🚀 13. Show: 					COMPLETED ✅
+🚀 14. Destroy: 				COMPLETED ✅
+🚀 15. Update: 					COMPLETED ✅
+🚀 16. Update from dictionary: 			COMPLETED ✅
+🚀 17. Unittests for the Console: 		COMPLETED ✅
+```
 
 ---
 
-<center><h3>Repository Contents by Project Task</h3> </center>
+# 0x01. AirBnB clone - Web static
 
-| Tasks | Files | Description |
-| ----- | ----- | ------ |
-| 0: Authors/README File | [AUTHORS](https://github.com/justinmajetich/AirBnB_clone/blob/dev/AUTHORS) | Project authors |
-| 1: Pep8 | N/A | All code is pep8 compliant|
-| 2: Unit Testing | [/tests](https://github.com/justinmajetich/AirBnB_clone/tree/dev/tests) | All class-defining modules are unittested |
-| 3. Make BaseModel | [/models/base_model.py](https://github.com/justinmajetich/AirBnB_clone/blob/dev/models/base_model.py) | Defines a parent class to be inherited by all model classes|
-| 4. Update BaseModel w/ kwargs | [/models/base_model.py](https://github.com/justinmajetich/AirBnB_clone/blob/dev/models/base_model.py) | Add functionality to recreate an instance of a class from a dictionary representation|
-| 5. Create FileStorage class | [/models/engine/file_storage.py](https://github.com/justinmajetich/AirBnB_clone/blob/dev/models/engine/file_storage.py) [/models/_ _init_ _.py](https://github.com/justinmajetich/AirBnB_clone/blob/dev/models/__init__.py) [/models/base_model.py](https://github.com/justinmajetich/AirBnB_clone/blob/dev/models/base_model.py) | Defines a class to manage persistent file storage system|
-| 6. Console 0.0.1 | [console.py](https://github.com/justinmajetich/AirBnB_clone/blob/dev/console.py) | Add basic functionality to console program, allowing it to quit, handle empty lines and ^D |
-| 7. Console 0.1 | [console.py](https://github.com/justinmajetich/AirBnB_clone/blob/dev/console.py) | Update the console with methods allowing the user to create, destroy, show, and update stored data |
-| 8. Create User class | [console.py](https://github.com/justinmajetich/AirBnB_clone/blob/dev/console.py) [/models/engine/file_storage.py](https://github.com/justinmajetich/AirBnB_clone/blob/dev/models/engine/file_storage.py) [/models/user.py](https://github.com/justinmajetich/AirBnB_clone/blob/dev/models/user.py) | Dynamically implements a user class |
-| 9. More Classes | [/models/user.py](https://github.com/justinmajetich/AirBnB_clone/blob/dev/models/user.py) [/models/place.py](https://github.com/justinmajetich/AirBnB_clone/blob/dev/models/place.py) [/models/city.py](https://github.com/justinmajetich/AirBnB_clone/blob/dev/models/city.py) [/models/amenity.py](https://github.com/justinmajetich/AirBnB_clone/blob/dev/models/amenity.py) [/models/state.py](https://github.com/justinmajetich/AirBnB_clone/blob/dev/models/state.py) [/models/review.py](https://github.com/justinmajetich/AirBnB_clone/blob/dev/models/review.py) | Dynamically implements more classes |
-| 10. Console 1.0 | [console.py](https://github.com/justinmajetich/AirBnB_clone/blob/dev/console.py) [/models/engine/file_storage.py](https://github.com/justinmajetich/AirBnB_clone/blob/dev/models/engine/file_storage.py) | Update the console and file storage system to work dynamically with all  classes update file storage |
-<br>
-<br>
-<center> <h2>General Use</h2> </center>
-
-1. First clone this repository.
-
-3. Once the repository is cloned locate the "console.py" file and run it as follows:
+## Tasks (Overall):
 ```
-/AirBnB_clone$ ./console.py
-```
-4. When this command is run the following prompt should appear:
-```
-(hbnb)
-```
-5. This prompt designates you are in the "HBnB" console. There are a variety of commands available within the console program.
-
-##### Commands
-    * create - Creates an instance based on given class
-
-    * destroy - Destroys an object based on class and UUID
-
-    * show - Shows an object based on class and UUID
-
-    * all - Shows all objects the program has access to, or all objects of a given class
-
-    * update - Updates existing attributes an object based on class name and UUID
-
-    * quit - Exits the program (EOF will as well)
-
-
-##### Alternative Syntax
-Users are able to issue a number of console command using an alternative syntax:
-
-	Usage: <class_name>.<command>([<id>[name_arg value_arg]|[kwargs]])
-Advanced syntax is implemented for the following commands: 
-
-    * all - Shows all objects the program has access to, or all objects of a given class
-
-	* count - Return number of object instances by class
-
-    * show - Shows an object based on class and UUID
-
-	* destroy - Destroys an object based on class and UUID
-
-    * update - Updates existing attributes an object based on class name and UUID
-
-<br>
-<br>
-<center> <h2>Examples</h2> </center>
-<h3>Primary Command Syntax</h3>
-
-###### Example 0: Create an object
-Usage: create <class_name>
-```
-(hbnb) create BaseModel
-```
-```
-(hbnb) create BaseModel
-3aa5babc-efb6-4041-bfe9-3cc9727588f8
-(hbnb)                   
-```
-###### Example 1: Show an object
-Usage: show <class_name> <_id>
-
-```
-(hbnb) show BaseModel 3aa5babc-efb6-4041-bfe9-3cc9727588f8
-[BaseModel] (3aa5babc-efb6-4041-bfe9-3cc9727588f8) {'id': '3aa5babc-efb6-4041-bfe9-3cc9727588f8', 'created_at': datetime.datetime(2020, 2, 18, 14, 21, 12, 96959), 
-'updated_at': datetime.datetime(2020, 2, 18, 14, 21, 12, 96971)}
-(hbnb)  
-```
-###### Example 2: Destroy an object
-Usage: destroy <class_name> <_id>
-```
-(hbnb) destroy BaseModel 3aa5babc-efb6-4041-bfe9-3cc9727588f8
-(hbnb) show BaseModel 3aa5babc-efb6-4041-bfe9-3cc9727588f8
-** no instance found **
-(hbnb)   
-```
-###### Example 3: Update an object
-Usage: update <class_name> <_id>
-```
-(hbnb) update BaseModel b405fc64-9724-498f-b405-e4071c3d857f first_name "person"
-(hbnb) show BaseModel b405fc64-9724-498f-b405-e4071c3d857f
-[BaseModel] (b405fc64-9724-498f-b405-e4071c3d857f) {'id': 'b405fc64-9724-498f-b405-e4071c3d857f', 'created_at': datetime.datetime(2020, 2, 18, 14, 33, 45, 729889), 
-'updated_at': datetime.datetime(2020, 2, 18, 14, 33, 45, 729907), 'first_name': 'person'}
-(hbnb)
-```
-<h3>Alternative Syntax</h3>
-
-###### Example 0: Show all User objects
-Usage: <class_name>.all()
-```
-(hbnb) User.all()
-["[User] (99f45908-1d17-46d1-9dd2-b7571128115b) {'updated_at': datetime.datetime(2020, 2, 19, 21, 47, 34, 92071), 'id': '99f45908-1d17-46d1-9dd2-b7571128115b', 'created_at': datetime.datetime(2020, 2, 19, 21, 47, 34, 92056)}", "[User] (98bea5de-9cb0-4d78-8a9d-c4de03521c30) {'updated_at': datetime.datetime(2020, 2, 19, 21, 47, 29, 134362), 'id': '98bea5de-9cb0-4d78-8a9d-c4de03521c30', 'created_at': datetime.datetime(2020, 2, 19, 21, 47, 29, 134343)}"]
+Ⓜ️ 0. Inline styling				COMPLETED ✅	
+Ⓜ️ 1. 1. Head styling 				COMPLETED ✅	
+Ⓜ️ 2. CSS files 				COMPLETED ✅ 
+Ⓜ️ 3. Zoning done! 				COMPLETED ✅	
+Ⓜ️ 4. Search!					COMPLETED ✅	
+Ⓜ️ 5. More filters 				COMPLETED ✅
+Ⓜ️ 6. It's (h)over				COMPLETED ✅ 
+Ⓜ️ 7. Display results				COMPLETED ✅
+Ⓜ️ 8. More details				COMPLETED ✅
+🚀 9. Full details				COMPLETED ✅
+🚀 10. Flex					COMPLETED ✅
+🚀 11. Responsive design			COMPLETED ✅
+🚀 12. Accessibility 				COMPLETED ✅
 ```
 
-###### Example 1: Destroy a User
-Usage: <class_name>.destroy(<_id>)
-```
-(hbnb) User.destroy("99f45908-1d17-46d1-9dd2-b7571128115b")
-(hbnb)
-(hbnb) User.all()
-(hbnb) ["[User] (98bea5de-9cb0-4d78-8a9d-c4de03521c30) {'updated_at': datetime.datetime(2020, 2, 19, 21, 47, 29, 134362), 'id': '98bea5de-9cb0-4d78-8a9d-c4de03521c30', 'created_at': datetime.datetime(2020, 2, 19, 21, 47, 29, 134343)}"]
-```
-###### Example 2: Update User (by attribute)
-Usage: <class_name>.update(<_id>, <attribute_name>, <attribute_value>)
-```
-(hbnb) User.update("98bea5de-9cb0-4d78-8a9d-c4de03521c30", name "Todd the Toad")
-(hbnb)
-(hbnb) User.all()
-(hbnb) ["[User] (98bea5de-9cb0-4d78-8a9d-c4de03521c30) {'updated_at': datetime.datetime(2020, 2, 19, 21, 47, 29, 134362), 'id': '98bea5de-9cb0-4d78-8a9d-c4de03521c30', 'name': 'Todd the Toad', 'created_at': datetime.datetime(2020, 2, 19, 21, 47, 29, 134343)}"]
-```
-###### Example 3: Update User (by dictionary)
-Usage: <class_name>.update(<_id>, <dictionary>)
-```
-(hbnb) User.update("98bea5de-9cb0-4d78-8a9d-c4de03521c30", {'name': 'Fred the Frog', 'age': 9})
-(hbnb)
-(hbnb) User.all()
-(hbnb) ["[User] (98bea5de-9cb0-4d78-8a9d-c4de03521c30) {'updated_at': datetime.datetime(2020, 2, 19, 21, 47, 29, 134362), 'name': 'Fred the Frog', 'age': 9, 'id': '98bea5de-9cb0-4d78-8a9d-c4de03521c30', 'created_at': datetime.datetime(2020, 2, 19, 21, 47, 29, 134343)}"]
-```
-<br>
+## W3C-Validator (🚨Please, wait 10 seconds so that the GIF gets loaded🚨):
+![](https://github.com/Youssef-Hassane/AirBnB_clone/blob/main/images/video55.gif)
+
+## Task 0: Inline styling
+### Screenshot of 0-index.html:
+![Screenshot](https://github.com/Youssef-Hassane/AirBnB_clone/blob/main/images/0_Inline_styling_1.png)
+
+## Task 1: Head styling
+### Screenshot of 1-index.html:
+![Screenshot](https://github.com/Youssef-Hassane/AirBnB_clone/blob/main/images/1_Head_styling.png)
+
+## Task 2: CSS files
+### Screenshot of 2-index.html:
+![Screenshot](https://github.com/Youssef-Hassane/AirBnB_clone/blob/main/images/2_CSS_files.png)
+
+## Task 3: Zoning done!
+### Screenshot of 3-index.html:
+![Screenshot](https://github.com/Youssef-Hassane/AirBnB_clone/blob/main/images/3_Zoning_done.png)
+
+## Task 4: Search!
+### Screenshot of 4-index.html:
+![Screenshot](https://github.com/Youssef-Hassane/AirBnB_clone/blob/main/images/4_Search.png)
+
+## Task 5: More filters
+### Screenshot of 5-index.html:
+![Screenshot](https://github.com/Youssef-Hassane/AirBnB_clone/blob/main/images/5_More_filters.png)
+
+## Task 6: More filters
+### Gif of 6-index.html: (🚨Please, wait 10 seconds so that the GIF gets loaded🚨)
+![](https://github.com/Youssef-Hassane/AirBnB_clone/blob/main/images/6_Its_(h)over.gif)
+
+## Task 7: More filters
+### Screenshot of 7-index.html:
+![Screenshot](https://github.com/Youssef-Hassane/AirBnB_clone/blob/main/images/7_Display_results.png)
+
+## Task 8: More details
+### Screenshot of 8-index.html:
+![Screenshot](https://github.com/Youssef-Hassane/AirBnB_clone/blob/main/images/8_More_details.png)
+
+## Task 9: Full details
+### Screenshot of 8-index.html:
+![Screenshot](https://github.com/Youssef-Hassane/AirBnB_clone/blob/main/images/9_Full_details.png)
+
+## Task 11: Responsive design
+### GIF of 102-index.html: (🚨Please, wait 10 seconds so that the GIF gets loaded🚨)
+![](https://github.com/Youssef-Hassane/AirBnB_clone/blob/main/images/video56.gif)
+
+## Developers:
+
+| **Youssef Hassane (AKA Almasy)** | **Ahmed Abdelhamid (AKA 7medo)** |
+|---|---|
+| ![Youssef Hassane](https://github.com/Youssef-Hassane/Screenshot/blob/main/img.png) | ![Ahmed Abdelhamid](https://github.com/Youssef-Hassane/Screenshot/blob/main/Screenshot%202023-11-11%20at%2012.42.16%20AM-fotor-2023111104736.png) |
+| Youssef Hassane is a software engineer with a passion for building innovative and user-friendly web applications. He is currently a freelancer working on Upwork, where he is involved in a variety of projects. Youssef's goal is to become a world-class software engineer and make a positive impact on the world through his work. He is passionate about using technology to solve real-world problems and is always looking for new ways to use his skills to make a difference. | Ahmed Abdelhamid is a driven and ambitious student with a passion for problem-solving and creating software that solves real-world problems. He is always eager to learn new things and is always up for a challenge. He is a graduate from dental school and has a passion for creating software that creates a meaningful impact on users. During his internship year, Ahmed managed to learn HTML, CSS, and JavaScript and created a number of projects on the side while working as an intern dentist. |
+

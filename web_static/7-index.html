@@ -1,66 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<title>AirBnB clone</title>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>AirBnB clone - Web static</title>
+    <link rel="stylesheet" type="text/css" href="styles/3-header.css">
+    <link rel="stylesheet" type="text/css" href="styles/3-footer.css">
+	<link rel="stylesheet" type="text/css" href="styles/4-common.css">
+	<link rel="stylesheet" type="text/css" href="styles/6-filters.css">
+	<link rel="stylesheet" type="text/css" href="styles/7-places.css">
+	<link rel="icon" type="image/png" href="./images/icon.png">
+</head>
+<body id="body">
+	<header class="theHeader"></header>
 
-		<link rel="shortcut icon" href="images/icon.ico" >
-
-		<link rel="stylesheet" href="styles/4-common.css"/>
-		<link rel="stylesheet" href="styles/3-header.css"/>
-		<link rel="stylesheet" href="styles/3-footer.css"/>
-		<link rel="stylesheet" href="styles/6-filters.css"/>
-		<link rel="stylesheet" href="styles/7-places.css"/>
-	</head>
-    <body>
-		<header>
-			<div id="header_logo"></div>
-		</header>
-		<div class="container">
-			<section class="filters">
-				<button>Search</button>
+	<div class="container">
+		<section class="filters">
+			<div class="loc-ame-container">
 				<div class="locations">
-					<h3>States</h3>
-					<h4>California, Arizona...</h4>
-					<ul class="popover">
-						<li><h2>Arizona</h2>
-							<ul>
-								<li><h4>Page</h4></li>
-								<li><h4>Page2</h4></li>
-							</ul></li>
-						<li><h2>California</h2>
-							<ul>
-								<li><h4>San Francisco</h4></li>
-								<li><h4>Los Altos</h4></li>
-							</ul></li>
-					</ul>
+					<div class="location-text">
+						<h3 class="States-title">States</h3>
+						<h4 class="details">California, Arizona...</h4>
+					</div>
+					<div class="div-popover">
+						<ul class="popover">
+							<li class="li-popover">
+								<h2>Arizona:</h2>
+								<ul class="popover">
+									<li>Page</li>
+									<li>Page2</li>
+								</ul>
+							</li>
+							<li class="li-popover">
+								<h2>California:</h2>
+								<ul class="popover">
+									<li>San Francisco</li>
+									<li>Los Altos</li>
+								</ul>
+							</li>
+							
+						</ul>
+					</div>
 				</div>
 				<div class="amenities">
-					<h3>Amenities</h3>
-					<h4>Internet, Kitchen...</h4>
-					<ul class="popover">
-						<li><h4>Internet</h4></li>
-						<li><h4>TV</h4></li>
-						<li><h4>Kitchen</h4></li>
-						<li><h4>Iron</h4></li>
-					</ul>
+					<div class="amenity-text">
+						<h3 class="amenities-title">Amenities</h3>
+						<h4 class="details">Internet, Kitchen...</h4>
+					</div>
+					<div class="div-popover">
+						<ul class="popover ul-popover">
+							<li>Internet</li>
+							<li>TV</li>
+							<li>Kitchen</li>
+							<li>Iron</li>
+						</ul>
+					</div>
 				</div>
-
-			</section>
-			<section class="places">
+			</div>
+			<button class="button-search">Search</button>
+		</section>
+		<!-- 7-index.html -->
+		<section class="places">
+			<div class="places-h1">
 				<h1>Places</h1>
-				<article>
+			</div>
+			<div class="article-container">
+				<article class="article-places">
 					<h2>My home</h2>
 				</article>
-				<article>
+				<article class="article-places">
 					<h2>Tiny house</h2>
 				</article>
-				<article>
+				<article class="article-places">
 					<h2>A suite</h2>
 				</article>
-			</section>
+			</div>
+
+
+			
+			
+		</section>
+	</div>
+
+	<footer class="theFooter">
+		<div class="foo-div-one">
+			<p class="foo-p">Best School</p>
 		</div>
-		<footer>
-			<p>Holberton School</p>
-		</footer>
-	</body>
+	</footer>
+</body>
 </html>
