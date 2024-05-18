@@ -13,8 +13,9 @@ def do_pack():
     Returns the archive path if successful, otherwise returns None.
     """
 
-    time = datetime.now()
-    archive_name = 'web_static_' + time.strftime("%Y%m%d%H%M%S") + '.tgz'
+    current_time = datetime.now()
+    archive_name = \
+    'web_static_' + current_time.strftime("%Y%m%d%H%M%S") + '.tgz'
 
     # Create the versions directory if it doesn't exist
     local('mkdir -p versions')
