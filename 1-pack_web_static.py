@@ -7,7 +7,7 @@ from datetime import datetime
 from fabric.api import local
 
 
-def create_archive():
+def do_pack():
     """
     Creates an archive from the contents of the web_static folder.
     Returns the archive path if successful, otherwise returns None.
