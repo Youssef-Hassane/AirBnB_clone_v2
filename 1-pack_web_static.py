@@ -6,12 +6,13 @@ Fabric script to generate a tgz archive.
 from datetime import datetime
 from fabric.api import local
 
+
 def create_archive():
     """
     Creates an archive from the contents of the web_static folder.
     Returns the archive path if successful, otherwise returns None.
     """
-    
+
     current_time = datetime.now()
     archive_name = 'web_static_' + current_time.strftime("%Y%m%d%H%M%S") + '.tgz'
     
