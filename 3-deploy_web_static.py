@@ -56,7 +56,7 @@ def do_deploy(archive_path):
         release_path = "/data/web_static/releases/"
 
         # Upload the archive to the /tmp/ directory on the web server
-        put(archive_path, '/tmp/')
+        local("cp {} /tmp/".format(archive_path))
 
         # Create the release directory on the web server
         local('mkdir -p {}{}'.format(release_path, base_name))
