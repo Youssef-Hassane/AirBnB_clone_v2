@@ -94,7 +94,8 @@ def deploy():
     bool: True if both the creation and deployment were successful,
     False otherwise.
     """
-    archive_path = do_pack()
-    if archive_path is None:
-        return False
-    return do_deploy(archive_path)
+    # archive_path = do_pack()
+    # if archive_path is None:
+    #     return False
+    # return do_deploy(archive_path)
+    return do_deploy(do_pack())
