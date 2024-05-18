@@ -78,6 +78,3 @@ def deploy():
     # else:
     return do_deploy_local(do_pack())
 
-
-scd,lvjkfdnjkdfn
-kldfhbewfberkjfwefkewhjfewkjf
