@@ -17,6 +17,8 @@ sudo mkdir -p /data/web_static/releases/
 sudo mkdir -p /data/web_static/shared/
 sudo mkdir -p /data/web_static/releases/test/
 
+chmod 777 /data/web_static/releases/test
+
 # Create a test HTML file in the test release directory
 sudo touch /data/web_static/releases/test/index.html
 sudo echo "<html>
@@ -28,7 +30,7 @@ sudo echo "<html>
 </html>" | sudo tee /data/web_static/releases/test/index.html
 
 # Create a symbolic link to the test release directory
-sudo ln -s -f /data/web_static/releases/test/ /data/web_static/current
+sudo ln -sf /data/web_static/releases/test/ /data/web_static/current
 
 # Change ownership of the /data/ directory to the ubuntu user
 sudo chown -R ubuntu:ubuntu /data/
@@ -37,4 +39,4 @@ sudo chown -R ubuntu:ubuntu /data/
 sudo sed -i '/listen 80 default_server/a location /hbnb_static { alias /data/web_static/current/;}' /etc/nginx/sites-enabled/default
 
 # Restart Nginx to apply the new configuration
-sudo service nginx restart
+sudo service nginx start
