@@ -37,7 +37,7 @@ def passing_task_3(archive_path):
         # Remove the current symbolic link
         local('rm -rf /data/web_static/current')
 
-        # Create a new symbolic link to the new release
+        # Create -- a new symbolic link to the new release
         local('ln -s {}{}/ /data/web_static/current'.format(release_path,
                                                             base_name))
 
