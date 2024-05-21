@@ -43,9 +43,9 @@ def number(n):
 
 
 @app.route('/number_template/<int:n>', strict_slashes=False)
-def number_template(num):
+def number_template(n):
     """Return an HTML page at the /number_template/<n> URL."""
-    return render_template('5-number.html', n=num)
+    return render_template('5-number.html', n=n)
 
 
 if __name__ == '__main__':
