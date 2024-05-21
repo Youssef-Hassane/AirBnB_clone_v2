@@ -22,8 +22,8 @@ def hbnb():
 # Define a route for the /c/<text> URL and disable strict slashes
 @app.route('/c/<text>', strict_slashes=False)
 def c_text(text):
-	"""Return a string at the /c/<text> URL."""
-	return 'C {}'.format(text.replace('_', ' '))
+    """Return a string at the /c/<text> URL."""
+    return 'C {}'.format(text.replace('_', ' '))
 
 
 if __name__ == '__main__':
