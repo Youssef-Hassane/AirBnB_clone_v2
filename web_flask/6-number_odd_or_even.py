@@ -55,7 +55,8 @@ def number_odd_or_even(n):
     """Return an HTML page at the /number_odd_or_even/<n> URL."""
     if n % 2 == 0:
         # if n is even
-        return render_template('6-number_odd_or_even.html', n=n, evenOrOdd='even')
+        return render_template('6-number_odd_or_even.html', n=n,
+                               evenOrOdd='even')
     # if n is odd
     return render_template('6-number_odd_or_even.html', n=n, evenOrOdd='odd')
 
