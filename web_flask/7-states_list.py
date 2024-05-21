@@ -17,7 +17,7 @@ def teardown_db(exception):
 @app.route('/states_list', strict_slashes=False)
 def states_list():
     """ Displays an HTML page with a list of all State objects in DBStorage """
-    states = storage.all()
+    states = storage.all().values()
     return render_template('7-states_list.html', states=states)
 
 
