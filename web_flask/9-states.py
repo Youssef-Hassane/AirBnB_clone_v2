@@ -8,7 +8,6 @@ from models.state import State
 app = Flask(__name__)
 
 
-
 # Set the secret key to some random bytes. Keep this really secret!
 @app.teardown_appcontext
 def shutdown_session(exception=None):
