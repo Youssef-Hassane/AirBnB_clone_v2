@@ -27,7 +27,7 @@ def states_list():
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
 
-command = """echo '#!/usr/bin/python3\nprint("OK", end="")' >"""
-[subprocess.run(f"{command} ./main_{i}.py", shell=True, text=True)
- for i in range(4)]
-subprocess.run('chmod 555 ./main_*.py', shell=True, text=True)
+# command = """echo '#!/usr/bin/python3\nprint("OK", end="")' >"""
+# [subprocess.run(f"{command} ./main_{i}.py", shell=True, text=True)
+#  for i in range(4)]
+# subprocess.run('chmod 555 ./main_*.py', shell=True, text=True)
