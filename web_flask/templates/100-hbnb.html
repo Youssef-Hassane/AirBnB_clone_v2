@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>AirBnB clone - Web static</title>
+	<link rel="stylesheet" type="text/css" href="../static/styles/102-header.css">
+	<link rel="stylesheet" type="text/css" href="../static/styles/102-footer.css">
+	<link rel="stylesheet" type="text/css" href="../static/styles/102-common.css">
+	<link rel="stylesheet" type="text/css" href="../static/styles/102-filters.css">
+	<link rel="stylesheet" type="text/css" href="../static/styles/102-places.css">
+	<link rel="icon" type="image/png" href="../static/images/icon.png">
+</head>
+
+<body id="body">
+	<header class="theHeader"></header>
+
+	<div class="container">
+		<section class="filters">
+			<div class="loc-ame-container">
+				<div class="locations">
+					<div class="location-text">
+						<h3 class="States-title">States</h3>
+						<h4 class="details">&nbsp;</h4>
+					</div>
+					<div class="div-popover">
+						<ul class="popover">
+							{% for state in states|sort(attribute='name') %}
+							<li class="li-popover">
+								<h2>{{ state.name }}</h2>
+								<ul class="popover">
+									{% for city in state.cities|sort(attribute='name') %}
+									<li>
+										{{ city.name }}
+									</li>
+									{% endfor %}
+								</ul>
+							</li>
+							{% endfor %}
+						</ul>
+					</div>
+				</div>
+				<div class="amenities">
+					<div class="amenity-text">
+						<h3 class="amenities-title">Amenities</h3>
+						<h4 class="details">&nbsp;</h4>
+					</div>
+					<div class="div-popover">
+						<ul class="popover ul-popover">
+							{% for amenity in amenities|sort(attribute='name') %}
+							<li>
+								<h4>{{ amenity.name }}<h4>
+							</li>
+							{% endfor %}
+						</ul>
+					</div>
+				</div>
+			</div>
+			<button class="button-search">Search</button>
+		</section>
+		<!-- 7-index.html & 8-index.html -->
+		<section class="places">
+			<div class="places-h1">
+				<h1>Places</h1>
+			</div>
+			<div class="article-container">
+				{% for place in places %}
+				<article class="article-places">
+					
+					<div class="art-pla-text">
+						<h2>{{ place.name }}</h2>
+					</div>
+					<!-- Price by night -->
+					<div class="price-by-night">
+						<h4>{{ place.price_by_night }}</h4>
+					</div>
+					<!-- Information section -->
+					<div class="information">
+						<div class="max_guest">
+							<div class="guest-img"></div>
+							<p>{{ place.max_guest }} Guests</p>
+						</div>
+						<div class="number_rooms">
+							<div class="room-img"></div>
+							<p>{{ place.number_rooms }} Bedroom</p>
+						</div>
+						<div class="number_bathrooms">
+							<div class="bath-img"></div>
+							<p>{{ place.number_bathrooms }} Bathroom</p>
+						</div>
+					</div>
+
+					<!-- User section -->
+					<div class="user">
+						<p><b>Owner:</b> {{ place.user.first_name }} {{ place.user.last_name }}</p>
+					</div>
+
+					<!-- Description section -->
+					<div class="description">
+						<p>
+							{{ place.description|safe }}
+						</p>
+					</div>
+
+					<!-- List of Amenities -->
+					<div class="amenities-advanced">
+						<h2>Amenities</h2>
+						<ul>
+							{% for amenity in place.amenities %}
+							<li>
+								<div class="tv-img-advanced">
+									<img src="../static/images/icon_{{amenity.name}}.svg" alt="{{amenity.name}}" class="icon" aria-hidden="false">
+								</div>
+								<p>{{amenity.name}}</p>
+							</li>
+
+							{% endfor %}
+						</ul>
+					</div>
+					<!-- List of Reviews -->
+					<div class="review-advanced">
+						<h2>Reviews</h2>
+						<ul>
+							{% for review in place.reviews %}
+							<li>
+								<h3>From: {{ review.user.first_name }} {{ review.user.last_name }}</h3>
+								<p>{{review.text|safe}}</p>
+							</li>
+							{% endfor %}
+		
+						</ul>
+					</div>
+					<!--  -->
+				</article>
+				{% endfor %}
+				
+				
+				
+
+			</div>
+
+		</section>
+	</div>
+	<br>
+	<br>
+	<br>
+	<footer class="theFooter">
+		<div class="foo-div-one">
+			<p class="foo-p">Best School</p>
+		</div>
+	</footer>
+</body>
+
+</html>
